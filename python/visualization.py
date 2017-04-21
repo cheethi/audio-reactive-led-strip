@@ -189,7 +189,7 @@ prev_fps_update = time.time()
 
 
 def microphone_update(audio_samples):
-    global y_roll, prev_rms, prev_exp, prev_fps_update
+    global y_roll, prev_rms, prev_exp, prev_fps_update, visualization_effect
     # Normalize samples between 0 and 1
     y = audio_samples / 2.0**15
     # Construct a rolling window of audio samples
