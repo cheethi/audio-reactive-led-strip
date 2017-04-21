@@ -232,6 +232,8 @@ def microphone_update(audio_samples):
             r_curve.setData(y=led.pixels[0])
             g_curve.setData(y=led.pixels[1])
             b_curve.setData(y=led.pixels[2])
+        if config.RND_CHNG:
+            visualization_effect = visualize_spectrum
     if config.USE_GUI:
         app.processEvents()
     
