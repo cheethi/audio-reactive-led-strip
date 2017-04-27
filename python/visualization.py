@@ -189,7 +189,7 @@ prev_fps_update = time.time()
 
 
 def microphone_update(audio_samples):
-    global y_roll, prev_rms, prev_exp, prev_fps_update, visualization_effect
+    global y_roll, prev_rms, prev_exp, prev_fps_update, visualization_effect, ts_last_change, change_threshold
     # Normalize samples between 0 and 1
     y = audio_samples / 2.0**15
     # Construct a rolling window of audio samples
@@ -232,7 +232,22 @@ def microphone_update(audio_samples):
             r_curve.setData(y=led.pixels[0])
             g_curve.setData(y=led.pixels[1])
             b_curve.setData(y=led.pixels[2])
-        if config.RND_CHNG:
+        if config.RND_CHNG and ts_last_change + 120 < time.time():
+            change_random = random.random()
+            if change_random > change_threshold:
+                change_target = random.random()
+                if change_target < 0.4:
+                    visualization_effect = visualize_energy
+                elif change_targe < 0.6:
+                    visualization_effect = visualize_scroll
+                else:
+                    visualization_effect = visualize_spectrum 
+
+                change_threshold = 0.9999
+                ts_last_change = time.time()
+            else:
+                change_threshold = change_threshold * 0.9999
+                    
             visualization_effect = visualize_spectrum
     if config.USE_GUI:
         app.processEvents()
