@@ -252,7 +252,6 @@ def microphone_update(audio_samples):
             else:
                 change_threshold = change_threshold * 0.9999
                     
-            visualization_effect = visualize_spectrum
     if config.USE_GUI:
         app.processEvents()
     
