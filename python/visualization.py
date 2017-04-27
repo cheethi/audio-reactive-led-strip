@@ -233,16 +233,19 @@ def microphone_update(audio_samples):
             r_curve.setData(y=led.pixels[0])
             g_curve.setData(y=led.pixels[1])
             b_curve.setData(y=led.pixels[2])
-        if config.RND_CHNG and ts_last_change + 120 < time.time():
+        if config.RND_CHNG and ts_last_change + 60 < time.time():
             change_random = random.random()
             if change_random > change_threshold:
                 change_target = random.random()
                 if change_target < 0.4:
                     visualization_effect = visualize_energy
-                elif change_targe < 0.6:
+                    print "Change to Energy"
+                elif change_target < 0.6:
                     visualization_effect = visualize_scroll
+                    print "Change to Scroll"
                 else:
                     visualization_effect = visualize_spectrum 
+                    print "Change to Spectrum"
 
                 change_threshold = 0.9999
                 ts_last_change = time.time()
