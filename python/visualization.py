@@ -239,13 +239,13 @@ def microphone_update(audio_samples):
                 change_target = random.random()
                 if change_target < 0.4:
                     visualization_effect = visualize_energy
-                    print "Change to Energy"
+                    print("Change to Energy")
                 elif change_target < 0.6:
                     visualization_effect = visualize_scroll
-                    print "Change to Scroll"
+                    print("Change to Scroll")
                 else:
                     visualization_effect = visualize_spectrum 
-                    print "Change to Spectrum"
+                    print("Change to Spectrum")
 
                 change_threshold = 0.9999
                 ts_last_change = time.time()
